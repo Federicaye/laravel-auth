@@ -31,7 +31,7 @@
 
 <div>
 <label for="img">Image</label>
-<input type="file" accept="image/*" name="img">
+<input type="file"  name="img">
 </div>
 
 <input type="submit">
