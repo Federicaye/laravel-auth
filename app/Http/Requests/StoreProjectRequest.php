@@ -24,6 +24,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => 'required',
             'link' => 'required',
+            'category_id' => 'nullable|exists:category,id',
            
         ];
     }

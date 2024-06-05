@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('link')->unique();
-            $table->string('technology')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('description');
             $table->dateTime('date_creation', $precision = 0)->nullable();
             $table->string('img');
