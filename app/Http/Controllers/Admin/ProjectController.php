@@ -13,9 +13,16 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
+        if (!empty($request->query('search'))) {
+            $category = $request->query('search');
+            $projects = Project::where('category', $category)->get();
+        } else {
+            $projects = Project::all();
+        }
+
+      
         return view('admin.projects.index', compact('projects'));
     }
 
