@@ -29,7 +29,7 @@
         <div>
             @foreach ($technologies as $techology )
             
-            <input type="checkbox" name="tags[]" class="btn-check" id="btn-check" autocomplete="off">
+            <input type="checkbox" name="tags[]" class="btn-check {{$project->technologies->contains($technology->id)?}}" id="btn-check" autocomplete="off">
             <label class="btn btn-primary" for="btn-check">{{$technology->name}}</label>
 
             @endforeach

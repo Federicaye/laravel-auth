@@ -7,6 +7,8 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -31,7 +33,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $categories = Category::all();
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('categories', 'technologies'));
+
+       
     }
 
     /**
@@ -40,6 +46,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $form_data = $request->validated();
+        $form_data['slug'] = Project::generateSlug($form_data['name']);
        
         if ($request->hasFile('img')) {
          
@@ -50,6 +57,9 @@ class ProjectController extends Controller
         }
 
         $newProject = Project::create($form_data);
+        if ($request->has('technologies')){
+            $newProject->technologies()->attach($request->technologies);
+        }
         
         return redirect()->route('admin.project.index');
     }
@@ -67,7 +77,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $categories = Category::all();
+        return view('admin.projects.create', compact('categories'));
     }
 
     /**
@@ -75,7 +86,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $form_data= $request->all();
+        if ($project->name !== $form_data['name']) {
+            $form_data['slug'] = Project::generateSlug($form_data['name']);
+        }
     }
 
     /**
@@ -83,6 +97,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        if ($project->img) {
+            Storage::delete($project->img);
+        }
+        $project->delete();
+        return redirect()->route('admin.project.index')->with('message', $project->name . ' è stato eliminato');
     }
 }
