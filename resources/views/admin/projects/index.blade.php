@@ -41,8 +41,11 @@
         <tr>
             <td>{{$project->name}}</td>
             <td>{{$project->link}}</td>
-            <td>{{$project->category}}</td>
-            <td>{{$project->technology}}</td>
+            <td>{{$project->category->name}}</td>
+            <td>
+                @foreach ($technologies as $technology)
+            <span>{{$technology->name}}</span>
+            @endforeach</td>
             <td>{{$project->description}}</td>
             <td>{{$project->date_creation}}</td>
             <td>

@@ -14,7 +14,7 @@
         <input type="text" class="form-control" id="link" placeholder="link" name="link">
     </div>
 
-    <div>
+    <div class="mb-3">
         <label for="category_id" class="form-label">Select Category</label>
         <select name="category_id" id="category_id" class="form-control">
             <option value="">Select a category</option>
@@ -30,7 +30,7 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
     </div>
 
-    <div>
+    <div class="mb-3">
         <p>Seleziona le tecnologie</p>
         @foreach ($technologies as $technology)
 
@@ -46,12 +46,11 @@
 
     </div>
 
-
-    <div>
+    <div class="mb-3">
         <label for="img">Image</label>
         <input type="file" name="img">
     </div>
-    <div>
+    <div class="mb-3">
         <button type="submit" class="btn btn-danger">Create</button>
         <button type="reset" class="btn btn-secondary">Reset</button>
     </div>

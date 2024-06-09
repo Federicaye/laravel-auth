@@ -24,8 +24,10 @@ class ProjectController extends Controller
             $projects = Project::all();
         }
 
-      
-        return view('admin.projects.index', compact('projects'));
+      $technologies = Technology::all();
+      $categories = Category::all();
+    
+        return view('admin.projects.index', compact('projects', 'categories', 'technologies'));
     }
 
     /**
