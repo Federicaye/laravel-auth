@@ -17,9 +17,9 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        if (!empty($request->query('search'))) {
-            $category = $request->query('search');
-            $projects = Project::where('category', $category)->get();
+        if (!empty($request->query('search-cat'))) {
+            $category = $request->query('search-cat');
+            $projects = Project::where('category_id', $category)->get();
         } else {
             $projects = Project::all();
         }

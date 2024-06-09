@@ -3,26 +3,26 @@
 <div class="d-flex justify-content-between">
     <p>Projects</p>
     <div>
-        <form action="{{route('admin.projects.index')}}" method="GET" id="search-form">
-            <select name="search" id="search" class="form-select">
-                <option value="fullstack">Fullstack</option>
-                <option value="frontend">Frontend</option>
-                <option value="backend">Backend</option>
+        <form action="{{route('admin.projects.index')}}" method="GET" id="search-form-tech">
+            <select name="search-tech" id="search-tech" class="form-select">
+            <option value="">all</option>
+                @foreach ($technologies as $technology)
+                    <option value="{{$technology->id}}">{{$technology->name}}</option>
+                @endforeach
             </select>
-
         </form>
     </div>
-
     <div>
-        <form action="{{route('admin.projects.index')}}" method="GET" id="search-form-technologies">
-            <select name="search-technologies" id="search-technologies" class="form-select">
-                <option value="HTML">HTML</option>
-                <option value="CSS">CSS</option>
-                <option value="javascript">Javascript</option>
+        <form action="{{route('admin.projects.index')}}" method="GET" id="search-form-cat">
+            <select name="search-cat" id="search-cat" class="form-select">
+            <option value="">all</option>
+                @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
             </select>
-
         </form>
     </div>
+    
 
 </div>
 <table class="table table-hover">
@@ -44,8 +44,8 @@
             <td>{{$project->category->name}}</td>
             <td>
                 @foreach ($technologies as $technology)
-            <span>{{$technology->name}}</span>
-            @endforeach</td>
+                    <span>{{$technology->name}}</span>
+                </td> @endforeach
             <td>{{$project->description}}</td>
             <td>{{$project->date_creation}}</td>
             <td>
