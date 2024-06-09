@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-between">
     <p>Projects</p>
     <div>
-        <form action="{{route('admin.project.index')}}" method="GET" id="search-form">
+        <form action="{{route('admin.projects.index')}}" method="GET" id="search-form">
             <select name="search" id="search" class="form-select">
                 <option value="fullstack">Fullstack</option>
                 <option value="frontend">Frontend</option>
@@ -14,7 +14,7 @@
     </div>
 
     <div>
-        <form action="{{route('admin.project.index')}}" method="GET" id="search-form-technologies">
+        <form action="{{route('admin.projects.index')}}" method="GET" id="search-form-technologies">
             <select name="search-technologies" id="search-technologies" class="form-select">
                 <option value="HTML">HTML</option>
                 <option value="CSS">CSS</option>

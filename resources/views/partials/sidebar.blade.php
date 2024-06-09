@@ -7,7 +7,7 @@
     <a class="nav-link active" {{Route::currentRouteName() == 'admin.dashboard' ? 'active' : ''}} href="{{route('admin.dashboard')}}">Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" {{Route::currentRouteName() == 'admin.project.index' ? 'active' : ''}} href="{{route('admin.project.index')}}">Projects</a>
+    <a class="nav-link" {{Route::currentRouteName() == 'admin.projects.index' ? 'active' : ''}} href="{{route('admin.projects.index')}}">Projects</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Technologies</a>
